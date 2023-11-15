@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title mb-4">Bienvenido, {{ username }}</h1>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card text-white bg-success mb-3 text-center" style="max-width: 18rem; height: 200px;">
+                <div class="card-header">Facturación</div>
+                <div class="card-body">
+                  <h5 class="card-title">Crea nuevas ventas</h5>
+                  <a href="/facturacion" class="btn btn-light">Ir a facturación</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card text-white bg-info mb-3 text-center" style="max-width: 18rem; height: 200px;">
+                <div class="card-header">Reporte de ventas</div>
+                <div class="card-body">
+                  <h5 class="card-title">Visualiza reportes</h5>
+                  <a href="/reportes" class="btn btn-light">Ir a reportes</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card text-white bg-secondary mb-3 text-center" style="max-width: 18rem; height: 200px;">
+                <div class="card-header">Inventario</div>
+                <div class="card-body">
+                  <h5 class="card-title">Administra tu inventario</h5>
+                  <a href="/inventario" class="btn btn-light">Ir a inventario</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form action="{{ url_for('logout') }}" method="post" id="logout-form">
+            <button class="btn btn-primary btn-block mt-5" type="submit">Cerrar sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

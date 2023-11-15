@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Factura de venta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Factura de venta</h1>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-md-6">
+                <h5>Datos del comprador:</h5>
+                <p><strong>Nombre y apellidos:</strong> {{ venta['nombres_cliente'] }} {{ venta['apellidos_cliente'] }}
+                </p>
+                <p><strong>DNI:</strong> {{ venta['dni_cliente'] }}</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Datos de la venta:</h5>
+                <p><strong>Fecha y hora:</strong> {{ venta['fecha_venta']}}</p>
+                <p><strong>Numero de venta:</strong> {{ venta['id_venta'] }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Cantidad</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto['cantidad'] }}</td>
+                            <td>{{ producto['nombre_producto'] }}</td>
+                            <td>{{ producto['descripcion_producto'] }}</td>
+                            <td>{{ producto['precio_unitario'] }}</td>
+                            <td>{{ producto['subtotal'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                            <td>{{ venta['total'] }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

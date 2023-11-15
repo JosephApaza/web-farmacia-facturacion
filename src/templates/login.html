@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Inicio de sesión</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h1 class="card-title mb-4">Inicio de sesión</h1>
+            <form method="POST">
+              <div class="form-group">
+                <label for="Username">Nombre de usuario:</label>
+                <input type="username" class="form-control" id="username" name="username"
+                  aria-describedby="usernameHelp" maxlength="15" minlength="5">
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" name="password" minlength="8" maxlength="30">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block mb-3">Iniciar sesión</button>
+              {% if error %}
+              <div class="alert alert-danger mt-3" role="alert">
+                {{ error }}
+              </div>
+              {% endif %}
+            </form>
+            <a href="/register" class="btn btn-link btn-block">¿No tiene una cuenta? Regístrese aquí</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Reporte de ventas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container-fluid mt-3 mb-5">
+		<a href="/home" class="btn btn-danger mb-5">Back</a>
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h1 class="card-title mb-4">Reporte de ventas</h1>
+						<div class="row mb-3">
+							<div class="col-12 col-md-6">
+								<form action="{{ url_for('reporte_ventas') }}" method="get">
+									<div class="input-group mb-3">
+										<input type="text" class="form-control" placeholder="Buscar por DNI" id="query"
+											name="query">
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="submit">Buscar</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Fecha</th>
+											<th>Comprador</th>
+											<th>Total</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for venta in ventas %}
+										<tr>
+											<td>{{ venta['fecha'].strftime('%d/%m/%Y - %H:%M:%S') }}</td>
+											<td>{{ venta['dni_cliente'] }}</td>
+											<td>{{ venta['total'] }}</td>
+											<td>
+												<form action="{{ url_for('ver_factura', venta_id=venta.id_venta) }}"
+													method="get" target="_blank">
+													<button class="btn btn-primary" type="submit">Ver factura</button>
+												</form>
+											</td>
+										</tr>
+										{% endfor %}
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

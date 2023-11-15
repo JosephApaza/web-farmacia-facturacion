@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <!-- Agregamos los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+            function validarRegistro() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+        
+                // Validar nombre de usuario
+                var regexUsername = /^[a-zA-Z\s]+$/;
+                if (username.trim() === "" || !regexUsername.test(username) || /[0-9]/.test(username)) {
+                    mostrarError("Ingrese un nombre de usuario válido sin caracteres especiales ni números");
+                    return false;
+                }
+        
+                // Validar contraseña
+                var regexPassword = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()\/-])[a-zA-Z\d!@#$%^&*()\/-]{8,}$/;
+                if (password.trim() === "" || !regexPassword.test(password) || password.includes(" ")) {
+                    mostrarError("La contraseña debe tener al menos 8 caracteres y contener al menos una letra, un número y un carácter especial. No se permiten espacios en blanco.");
+                    return false;
+                }
+        
+                return true;
+            }
+            
+            function mostrarError(mensaje) {
+                var errorElement = document.getElementById("error-message");
+                errorElement.innerText = mensaje;
+                errorElement.style.display = "block";
+            }
+        </script>
+        
+
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Registro</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/register" method="POST" onsubmit="return validarRegistro()">
+                            <div class="form-group">
+                                <label for="username">Nombre de usuario:</label>
+                                <input type="text" class="form-control" id="username" name="username" required
+                                    maxlength="15" minlength="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required
+                                    minlength="8" maxlength="30">
+                            </div>
+                            <div id="error-message" style="display: none;" class="alert alert-danger"></div>
+
+                            {% if error %}
+                            <p class="alert alert-danger">{{ error }}</p>
+                            {% endif %}
+                            <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        ¿Ya tienes una cuenta? <a href="/login">Inicia sesión aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

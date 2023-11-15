@@ -1,0 +1,19 @@
+INSTRUCCIONES PARA EJECUTAR DE MANERA CORRECTA LA APLICACIÓN WEB
+
+Paso 1: Instalación de recursos necesarios
+pip install firebase-admin
+pip install Flask
+pip install flask_paginate
+
+Paso 2: Resolución de conflicto de versiones
+En caso salga lo siguiente (problemas con las últimas versiones de Python): 
+"cannot import name 'gaecontrib' from 'requests_toolbelt._compat'"
+
+Se debe instalar una versión anterior:
+pip install requests_toolbelt==0.9.1
+
+Paso 3: Ejecutar la aplicación web
+Ejecutar el archivo app.py
+
+Paso 4:
+Ingresar a http://127.0.0.1:5000/ desde el navegador.
